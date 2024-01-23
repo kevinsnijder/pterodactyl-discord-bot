@@ -1,0 +1,27 @@
+﻿{
+	"messages": [
+		{ "login.required": "A login is required before you can access this command. Please run /login to set up your personal API key." },
+		{ "channel.command.executed": "{0} ran {1} in channel {2} ({3})" },
+		{ "listservers.noservers": "You have no available servers." },
+		{ "listservers.header": "*Available servers:*" },
+		{ "listservers.header.online": "Online:" },
+		{ "listservers.header.offline": "Offline:" },
+		{ "listservers.item.running": "- ✅ Running | {0}" },
+		{ "listservers.item.starting": "- ⌛ Starting | {0}" },
+		{ "listservers.item.stopping": "- ⌛ Stopping | {0}" },
+		{ "listservers.item.offline": "- 🛑 Offline | {0}" },
+		{ "startserver.starting": "⌛ Start | {0} : starting..." },
+		{ "startserver.startingCount": "⌛ Start | {0}: starting... ({1}s)" },
+		{ "startserver.started": "✅ Start | {0}: started after {1}s" },
+		{ "startserver.timeout": "❌ Start | {0}: timeout after {1}s" },
+		{ "startserver.failed": "❌ Start | {0}: failed after {1}s" },
+		{ "stopserver.stopping": "⌛ Stop | {0}: stopping..." },
+		{ "stopserver.failed": "❌ Stop | {0}: failed" },
+		{ "stopserver.stopped": "🛑 Stop | {0}: stopped" },
+		{ "login.loginadded": "Successfully logged in user {0}" },
+		{ "login.loginupdated": "Updated the API key for user {0}." },
+		{ "login.loginnotworking": "The provided API key does not work as expected. Please provide an API key from {0}/account/api." },
+		{ "deletelogin.nonexistent": "The user you are trying to delete does not exist in the database." },
+		{ "deletelogin.deleted": "Successfully deleted the API key for user {0}." }
+	]
+}
