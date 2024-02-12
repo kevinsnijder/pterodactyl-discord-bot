@@ -162,6 +162,31 @@ namespace DiscordBot.Modules
          return ModifyOriginalResponseAsync(msg => msg.Content = string.Format(Messages.Get("stopserver.stopped"), serverName));
       }
 
+      [SlashCommand("restartserver", "Restarts a running server.")]
+      [RequiresAnyLogin]
+      [RequireContext(ContextType.Guild)]
+      [RequireUserPermission(GuildPermission.UseApplicationCommands)]
+      public Task RestartServerCommand([Autocomplete(typeof(PterodactylServersAutoCompleteHandler))] string serverID)
+      {
+         _logger.LogInformation(Context.Interaction.Id + " | " + string.Format(Messages.Get("channel.command.executed"), Context.User.Username, "/restartserver " + serverID, Context.Interaction.Channel.Name, Context.Interaction.ChannelId));
+         _logger.LogInformation(Context.Interaction.Id + " | " + "Sending restart command to pterodactyl");
+
+         RespondAsync(string.Format(Messages.Get("stopserver.stopping"), serverID), ephemeral: true);
+         var stopresult = _dataProvider.SendServerSignalAsync(Context.Interaction.Id, Context.Interaction.User.Id, serverID, Signals.stop).Result;
+
+         if (stopresult == false)
+         {
+            _logger.LogError(Context.Interaction.Id + " | " + "Failed to send the stopserver command to pterodactyl");
+            return ModifyOriginalResponseAsync(msg => msg.Content = string.Format(Messages.Get("stopserver.failed"), serverID));
+         }
+
+         var server = GetServerByIdAsync(serverID).Result;
+         var serverName = server.Name;
+
+         _logger.LogInformation(Context.Interaction.Id + " | " + "Finishing /stopserver command");
+         return ModifyOriginalResponseAsync(msg => msg.Content = string.Format(Messages.Get("stopserver.stopped"), serverName));
+      }
+
       /// <summary>
       /// Sets the current channel as a console channel for the specified server
       /// </summary>
