@@ -40,6 +40,10 @@ namespace DiscordBot.AutoCompleteHandlers
          foreach (var server in servers)
          {
             switch (commandName) {
+               case "restartserver":
+                  if (server.Status == "running" || server.Status == "starting")
+                     results.Add(new AutocompleteResult(server.Name, server.Identifier));
+                  break;
                case "stopserver":
                   if (server.Status == "running" || server.Status == "starting")
                      results.Add(new AutocompleteResult(server.Name, server.Identifier));

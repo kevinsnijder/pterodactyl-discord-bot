@@ -3,6 +3,7 @@
    public enum Signals
    {
       start, 
-      stop
+      stop,
+      restart
    }
 }
